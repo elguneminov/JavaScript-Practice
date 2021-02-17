@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Javascript praktika</title>
+</head>
+<body>
+  <h2 id="title">Javascript praktika</h2>
+  <button id="btn">Klik edin</button>
+  <br><br><br>
+  <p class="list">Her hansi ifade</p>
+  <p class="list">Her hansi ifade</p>
+  <p class="list">Her hansi ifade</p>
+  <p class="list">Her hansi ifade</p>
+  <button id="btn2">Arxa fonu deyisdir</button>
+  <br><br><br>
+  <button id="profileBtn">Profil</button>
+
+  <!--empty html elements below-->
+  <p id="box"></p>
+  <p id="box2"></p>
+
+  <input type="text" id="user">
+  <button id="userName">Ad daxil edib klik edin</button>
+  <p id="box3"></p>
+  <br><br><br>
+  <h2>Erzaq siyahisi</h2>
+  <input type="text" id="addList">
+  <button id="add">Elave edin</button>
+  <p id="box4"></p>
+  <br><br><br>
+
+  <script>
+    //code to change color of title targeting by id
+    //first, add an event listener
+    document.getElementById('btn').addEventListener('click', changeColor);
+    //now, create the function
+    function changeColor() {
+      document.getElementById("title").style.color = "red";
+    }
+
+    //code to change style of elements by className
+    //first, add event listener
+    document.getElementById('btn2').addEventListener('click', newStyle);
+    //now, create the function but we need to loop through elements first
+    function newStyle() {
+      let things = document.getElementsByClassName("list");
+      for (i = 0; i < things.length; i++) {
+        things[2].style.backgroundColor = "red";
+      }
+    }
+
+    //using innerHTML to display output
+    //add event Listener
+    document.getElementById('profileBtn').addEventListener('click', displayProfile);
+    //now, create function
+    function displayProfile() {
+      let firstName = "Elgun";
+      document.getElementById("box").innerHTML = "Menim adim " + firstName+"dur.";
+      let age = 21;
+      document.querySelector("#box2").innerHTML = "Men " + age + " yasindayam.";
+    }
+
+    //using an if statement and having the user add their own dynamic content
+    //get user input
+    let name = document.getElementById("user");
+    //add event listener
+    document.getElementById('userName').addEventListener('click', greeting);
+    //create greeting function
+    function greeting() {
+      if (name.value === "") {
+        alert("bosh sahe ola bilmez.");
+      }
+      else {
+        document.getElementById("box3").innerHTML = "Salam " + name.value;
+      }
+    }
+
+    //user adds to an array list
+    //learn about array methods
+    // get user input
+    let item = document.getElementById("addList");
+    //add event Listener
+    document.getElementById('add').addEventListener('click', addItem);
+    let erzaqlist = ["alma","pendir","sud","yumurta"];
+    let displayList = erzaqlist.toString();
+    document.querySelector("#box4").innerHTML = displayList;
+    //create function below
+    function addItem() {
+      let newItem = item.value;
+      erzaqlist.push(newItem);
+      let newList = erzaqlist.toString();
+      document.querySelector("#box4").innerHTML = newList;
+      item.value = '';
+
+    }
+    
+    
+  
+  </script>
+
+
+
+
+
+  
+</body>
+</html>
